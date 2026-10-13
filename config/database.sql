@@ -24,29 +24,29 @@ CREATE TABLE tabel_siswa (
     nama_siswa VARCHAR(100) NOT NULL
 );
 
-//tambahkan full data dummy siswa kelas untuk testing
+
 INSERT INTO tabel_siswa (nis, nama_siswa) VALUES
-('1001', 'Akmal Fahreza'),
-('1002', 'Allif Maulana Robbil Izza'),
-('1003', 'Ananda Try Anugrah'),
-('1004', 'Avichena Al-Khawarizmi'),
-('1005', 'El Zhar Al Ghifari'),
-('1006', 'Iman Yazi Suhmar Darkun'),
-('1007', 'Izzan Afresetya'),
-('1008', 'Maher Mucktar Balaka'),
-('1009', 'Mochammad Khahfi'),
-('1011', 'Muhammad Rizky Apriadi'),
-('1012', 'Muhammad Fakhri'),
-('1013', 'Muhammad Rizq Maulana'),
-('1014', 'Muhammad Rossy Fadliyanto'),
-('1015', 'Noval Aqiransah Ridho Mustofa'),
-('1016', 'Putra Darmawan Budi'),
-('1017', 'Raffida Fathiyya Ramadhania'),
-('1018', 'Rafi Izhar Rivaldi'),
-('1019', 'Regan Ali Ramadhan'),
-('1020', 'Reyhan Echa Pratama'),
-('1021', 'Rizna Azzahra Fahrudin'),
-('1022', 'Tegar Permana Putra');
+('2425103847', 'Akmal Fahreza'),
+('2425938471', 'Allif Maulana Robbil Izza'),
+('2425482910', 'Ananda Try Anugrah'),
+('2425718293', 'Avichena Al-Khawarizmi'),
+('2425591028', 'El Zhar Al Ghifari'),
+('2425304958', 'Iman Yazi Suhmar Darkun'),
+('2425847561', 'Izzan Afresetya'),
+('2425192837', 'Maher Mucktar Balaka'),
+('2425657483', 'Mochammad Khahfi'),
+('2425203948', 'Muhammad Rizky Apriadi'),
+('2425839201', 'Muhammad Fakhri'),
+('2425475869', 'Muhammad Rizq Maulana'),
+('2425910283', 'Muhammad Rossy Fadliyanto'),
+('2425384756', 'Noval Aqiransah Ridho Mustofa'),
+('2425746581', 'Putra Darmawan Budi'),
+('2425182736', 'Raffida Fathiyya Ramadhania'),
+('2425501928', 'Rafi Izhar Rivaldi'),
+('2425928374', 'Regan Ali Ramadhan'),
+('2425610293', 'Reyhan Echa Pratama'),
+('2425374859', 'Rizna Azzahra Fahrudin'),
+('2425829104', 'Tegar Permana Putra');
 
 CREATE TABLE tabel_absensi (
     id_absen INT AUTO_INCREMENT PRIMARY KEY,

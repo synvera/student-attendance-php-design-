@@ -98,7 +98,7 @@ if (isset($_GET['deleted'])) $pesan = 'Data siswa dan riwayat absensinya berhasi
                     <form method="POST" action="" class="student-form">
                         <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($csrf_token, ENT_QUOTES, 'UTF-8'); ?>">
                         <?php if ($edit_siswa): ?><input type="hidden" name="id_siswa" value="<?php echo (int) $edit_siswa['id_siswa']; ?>"><?php endif; ?>
-                        <label><span>Nomor induk siswa</span><input type="text" name="nis" placeholder="Contoh: 1023" autocomplete="off" value="<?php echo htmlspecialchars($edit_siswa['nis'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required></label>
+                        <label><span>Nomor induk siswa</span><input type="text" name="nis" placeholder="Contoh: 2425123456" autocomplete="off" value="<?php echo htmlspecialchars($edit_siswa['nis'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required></label>
                         <label><span>Nama lengkap</span><input type="text" name="nama_siswa" placeholder="Masukkan nama siswa" autocomplete="name" value="<?php echo htmlspecialchars($edit_siswa['nama_siswa'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required></label>
                         <?php if ($edit_siswa): ?><button type="submit" name="update_siswa" class="primary-button">Simpan perubahan <span aria-hidden="true">✓</span></button><a class="cancel-edit-link" href="data_siswa.php">Batal</a><?php else: ?><button type="submit" name="tambah_siswa" class="primary-button">Tambah siswa <span aria-hidden="true">+</span></button><?php endif; ?>
                     </form>
