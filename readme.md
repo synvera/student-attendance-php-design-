@@ -1,16 +1,3 @@
-<div align="center">
-
-### 🎵 SPOTIFY · DEVELOPER SESSION
-**TOP TRACKS** yang menemani developer pertama merangkai Tahap awal AbsensiKu
-
-<a href="https://open.spotify.com/search/About%20You"><img src="https://img.shields.io/badge/01%20%C2%B7%20About%20You-Cari%20di%20Spotify-1DB954?style=for-the-badge&logo=spotify&logoColor=white" /></a>
-<a href="https://open.spotify.com/search/The%20Cure"><img src="https://img.shields.io/badge/02%20%C2%B7%20The%20Cure-Cari%20di%20Spotify-674B59?style=for-the-badge&logo=spotify&logoColor=white" /></a>
-<a href="https://open.spotify.com/search/Heaven"><img src="https://img.shields.io/badge/03%20%C2%B7%20Heaven-Cari%20di%20Spotify-535353?style=for-the-badge&logo=spotify&logoColor=white" /></a>
-<a href="https://open.spotify.com/search/Abadi"><img src="https://img.shields.io/badge/04%20%C2%B7%20Abadi-Cari%20di%20Spotify-585252?style=for-the-badge&logo=spotify&logoColor=white" /></a>
-<a href="https://open.spotify.com/search/Tunggulah%20Aku%20Di%20Jakarta"><img src="https://img.shields.io/badge/05%20%C2%B7%20Tunggulah%20Aku%20Di%20Jakarta-Cari%20di%20Spotify-9F0000?style=for-the-badge&logo=spotify&logoColor=white" /></a>
-<a href="https://open.spotify.com/search/Jatuh%20Suka"><img src="https://img.shields.io/badge/06%20%C2%B7%20Jatuh%20Suka-Cari%20di%20Spotify-0020C8?style=for-the-badge&logo=spotify&logoColor=white" /></a>
-
-</div>
 # AbsensiKu
 
 Aplikasi absensi siswa berbasis PHP dan MySQL/MariaDB. Aplikasi menyediakan dashboard, pengelolaan data siswa, pencatatan kehadiran, rekap semester, dan pengaturan kelas dalam antarmuka monokrom yang responsif.
