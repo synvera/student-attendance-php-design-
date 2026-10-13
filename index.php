@@ -4,8 +4,7 @@ include 'config/koneksi.php'; //untuk mengambil data koneksi dari file koneksi.p
 require_once 'config/app_settings.php';
 app_settings_initialize($koneksi);
 
-//disini kita buat dulu untuk logika "jika sudah pernah login, maka langsung pergi ke dashboard"
-if (isset($_SESSION['email_sekretaris'])) {
+if (isset($_SESSION['email_sekretaris']) || app_restore_remembered_session($koneksi)) {
     header("Location: dashboard.php");
     exit();
 }
@@ -20,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email_input = mysqli_real_escape_string($koneksi, $_POST['email']);
     $pw_input = $_POST['password'];
     $kodek_input = $_POST['kode'] ?? '';
-    $login = mysqli_prepare($koneksi, 'SELECT email, display_name, password_hash, role, legacy_code FROM app_users WHERE email = ? AND is_active = 1 LIMIT 1');
+    $login = mysqli_prepare($koneksi, 'SELECT id, email, display_name, password_hash, role, legacy_code FROM app_users WHERE email = ? AND is_active = 1 LIMIT 1');
     mysqli_stmt_bind_param($login, 's', $email_input);
     mysqli_stmt_execute($login);
     $akun = mysqli_fetch_assoc(mysqli_stmt_get_result($login));
@@ -33,6 +32,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['email_sekretaris'] = $akun['email'];
         $_SESSION['display_name'] = $akun['display_name'];
         $_SESSION['role'] = $akun['role'];
+        if (isset($_POST['remember_me']) && $_POST['remember_me'] === '1') {
+            app_remember_user($koneksi, (int) $akun['id']);
+        } else {
+            app_revoke_remember_token($koneksi);
+        }
         header("Location: dashboard.php");
         exit();
     } else {
@@ -66,6 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="password" name="password" required> <br> <br>
         <label for="kode">Kode Khusus (akun lama)</label> <br>
         <input type="password" name="kode"> <br> <br>
+        <label class="remember-row"><input type="checkbox" name="remember_me" value="1"><span>Ingat saya</span></label>
 
         <?php if($error != '') { echo "<p>$error</p><br>";} ?>
         <button type="submit">Masuk</button>

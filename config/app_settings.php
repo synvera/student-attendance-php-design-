@@ -29,6 +29,16 @@ function app_settings_initialize($koneksi)
         created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
 
+    mysqli_query($koneksi, "CREATE TABLE IF NOT EXISTS app_remember_tokens (
+        selector CHAR(32) NOT NULL PRIMARY KEY,
+        user_id INT UNSIGNED NOT NULL,
+        validator_hash CHAR(64) NOT NULL,
+        expires_at DATETIME NOT NULL,
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        INDEX (user_id),
+        CONSTRAINT fk_remember_tokens_user FOREIGN KEY (user_id) REFERENCES app_users(id) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+
     $homeroom_nip_column = mysqli_query($koneksi, "SHOW COLUMNS FROM app_settings LIKE 'homeroom_nip'");
     if ($homeroom_nip_column && mysqli_num_rows($homeroom_nip_column) === 0) {
         mysqli_query($koneksi, "ALTER TABLE app_settings ADD homeroom_nip VARCHAR(40) NOT NULL DEFAULT '' AFTER homeroom_teacher");
@@ -92,6 +102,100 @@ function app_settings_initialize($koneksi)
         }
         mysqli_free_result($legacy_accounts);
     }
+}
+
+function app_remember_cookie_options($expires)
+{
+    return [
+        'expires' => $expires,
+        'path' => '/',
+        'secure' => isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off',
+        'httponly' => true,
+        'samesite' => 'Lax',
+    ];
+}
+
+function app_clear_remember_cookie()
+{
+    setcookie('absenku_remember', '', app_remember_cookie_options(time() - 3600));
+    unset($_COOKIE['absenku_remember']);
+}
+
+function app_delete_remember_token($koneksi, $selector)
+{
+    $delete = mysqli_prepare($koneksi, 'DELETE FROM app_remember_tokens WHERE selector = ?');
+    if (!$delete) return false;
+    mysqli_stmt_bind_param($delete, 's', $selector);
+    $deleted = mysqli_stmt_execute($delete);
+    mysqli_stmt_close($delete);
+    return $deleted;
+}
+
+function app_remember_user($koneksi, $user_id)
+{
+    $selector = bin2hex(random_bytes(16));
+    $validator = bin2hex(random_bytes(32));
+    $expires = time() + 30 * 24 * 60 * 60;
+    $expires_at = date('Y-m-d H:i:s', $expires);
+    $insert = mysqli_prepare($koneksi, 'INSERT INTO app_remember_tokens (selector, user_id, validator_hash, expires_at) VALUES (?, ?, ?, ?)');
+    if (!$insert) return false;
+    $validator_hash = hash('sha256', $validator);
+    mysqli_stmt_bind_param($insert, 'siss', $selector, $user_id, $validator_hash, $expires_at);
+    $saved = mysqli_stmt_execute($insert);
+    mysqli_stmt_close($insert);
+    if (!$saved) return false;
+    setcookie('absenku_remember', $selector . ':' . $validator, app_remember_cookie_options($expires));
+    return true;
+}
+
+function app_revoke_remember_token($koneksi)
+{
+    $cookie = $_COOKIE['absenku_remember'] ?? '';
+    if (preg_match('/^([a-f0-9]{32}):[a-f0-9]{64}$/D', $cookie, $matches)) {
+        app_delete_remember_token($koneksi, $matches[1]);
+    }
+    app_clear_remember_cookie();
+}
+
+function app_restore_remembered_session($koneksi)
+{
+    $cookie = $_COOKIE['absenku_remember'] ?? '';
+    if ($cookie === '') return false;
+    if (!preg_match('/^([a-f0-9]{32}):([a-f0-9]{64})$/D', $cookie, $matches)) {
+        app_clear_remember_cookie();
+        return false;
+    }
+
+    $selector = $matches[1];
+    $validator = $matches[2];
+    $lookup = mysqli_prepare($koneksi, 'SELECT t.validator_hash, t.expires_at, u.id, u.email, u.display_name, u.role FROM app_remember_tokens t JOIN app_users u ON u.id = t.user_id WHERE t.selector = ? AND u.is_active = 1 LIMIT 1');
+    if (!$lookup) {
+        app_clear_remember_cookie();
+        return false;
+    }
+    mysqli_stmt_bind_param($lookup, 's', $selector);
+    mysqli_stmt_execute($lookup);
+    $user = mysqli_fetch_assoc(mysqli_stmt_get_result($lookup));
+    mysqli_stmt_close($lookup);
+
+    if (!$user || strtotime($user['expires_at']) <= time() || !hash_equals($user['validator_hash'], hash('sha256', $validator))) {
+        app_delete_remember_token($koneksi, $selector);
+        app_clear_remember_cookie();
+        return false;
+    }
+
+    if (!app_remember_user($koneksi, (int) $user['id'])) {
+        app_delete_remember_token($koneksi, $selector);
+        app_clear_remember_cookie();
+        return false;
+    }
+    app_delete_remember_token($koneksi, $selector);
+
+    session_regenerate_id(true);
+    $_SESSION['email_sekretaris'] = $user['email'];
+    $_SESSION['display_name'] = $user['display_name'];
+    $_SESSION['role'] = $user['role'];
+    return true;
 }
 
 function app_settings_get($koneksi)

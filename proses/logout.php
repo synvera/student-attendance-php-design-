@@ -1,11 +1,10 @@
 <?php
-//memulai session untuk mengenali sesi yang sedang berjalan
 session_start();
-//mengkosongkan data session saja yang tersimpan
+require_once __DIR__ . '/../config/koneksi.php';
+require_once __DIR__ . '/../config/app_settings.php';
+app_revoke_remember_token($koneksi);
 session_unset();
-//menghapus/menghancurkan session secara keseluruhan
 session_destroy();
-//setelah selesai, maka diarah kan ke login page 
 header("Location: ../index.php");
 exit();
 ?>
