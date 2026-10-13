@@ -90,6 +90,7 @@ File: `docs/screenshots/cetak-laporan.png`
 ![Screenshot halaman cetak laporan](docs/screenshots/cetak-laporan.png)
 
 ### UPDATE TAMPILAN
+
 File: `docs/screenshots/update/laporan-update.png`
 ![Screenshot halaman login](docs/screenshots/update/laporan-update.png)
 
