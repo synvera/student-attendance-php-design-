@@ -1,0 +1,161 @@
+/* Reset dasar untuk menghapus margin dan padding bawaan browser */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Background untuk seluruh halaman agar kotak login menonjol */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #e0e0e0; /* Abu-abu terang */
+}
+
+/* Container utama untuk membagi 2 kolom */
+.login-page {
+    display: flex;
+    width: 900px;
+    max-width: 90%;
+    background-color: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Kolom Kiri (Bagian Gambar) */
+.login-img {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5; /* Putih sedikit abu-abu */
+    padding: 40px;
+}
+
+.login-img img {
+    max-width: 100%;
+    height: auto;
+    /* Efek grayscale tambahan untuk memastikan gambar yang dimuat jadi hitam putih */
+    filter: grayscale(100%); 
+}
+
+/* Kolom Kanan (Bagian Form) */
+form {
+    flex: 1;
+    background-color: #1a1a1a; /* Hitam gelap seperti referensi namun monokrom */
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #ffffff;
+}
+
+/* Menyembunyikan tag <br> bawaan dari HTML agar jarak bisa diatur CSS murni */
+form br {
+    display: none;
+}
+
+/* Judul dan sub-judul */
+form h2 {
+    font-size: 36px;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+form p {
+    font-size: 14px;
+    color: #a0a0a0; /* Abu-abu terang untuk deskripsi */
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+/* Styling untuk Label */
+label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #d0d0d0;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* Styling untuk Input Box */
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 14px 15px;
+    margin-bottom: 20px;
+    background-color: transparent; /* Transparan seperti di referensi */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Border tipis putih/abu */
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+/* Efek saat input diklik/fokus */
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #ffffff;
+}
+
+/* Styling untuk pesan error (jika muncul) */
+form p:last-of-type:not(:first-of-type) {
+    color: #ffffff;
+    background-color: #333333;
+    padding: 10px;
+    border-left: 4px solid #ffffff;
+    margin-bottom: 20px;
+    font-size: 13px;
+}
+
+/* Styling untuk Tombol */
+button[type="submit"] {
+    width: 100%;
+    padding: 14px;
+    background-color: #ffffff; /* Tombol putih sebagai pengganti orange di B&W */
+    color: #000000; /* Teks hitam */
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+    background-color: #cccccc;
+}
+
+button[type="submit"]:active {
+    transform: scale(0.98);
+}
+
+/* Responsivitas: Ubah tata letak jika dibuka di layar kecil (HP) */
+@media (max-width: 768px) {
+    .login-page {
+        flex-direction: column;
+        width: 100%;
+        border-radius: 0;
+        min-height: 100vh;
+    }
+    
+    .login-img {
+        padding: 20px;
+        background-color: #ffffff;
+    }
+    
+    .login-img img {
+        max-width: 200px;
+    }
+    
+    form {
+        padding: 40px 30px;
+        flex: 2;
+    }
+}

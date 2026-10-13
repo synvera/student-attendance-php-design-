@@ -1,0 +1,130 @@
+.back-link, .count-chip, .progress-count, .section-index, .pending-label, .report-period { display: inline-flex; align-items: center; }
+.back-link { gap: 8px; color: #575a56; font-size: 11px; font-weight: 600; }
+.back-link span { font-size: 18px; }
+.count-chip { min-height: 37px; gap: 6px; padding: 0 11px; border: 1px solid #e1e2dd; border-radius: 4px; background: rgba(255,255,255,.65); color: #696c67; font-size: 10px; }
+.count-chip strong { color: #242624; font-size: 13px; }
+.notice { display: flex; min-height: 43px; align-items: center; gap: 10px; margin: -7px 0 18px; padding: 0 13px; border: 1px solid #e2e3df; border-radius: 4px; background: #fff; color: #414440; font-size: 11px; }
+.notice-error { border-color: #d8d9d5; background: #f0f0ed; }
+.notice-mark { display: grid; width: 20px; height: 20px; place-items: center; border: 1px solid #dadbd6; border-radius: 50%; color: #444743; font-size: 11px; font-weight: 700; }
+.add-student-section { margin-bottom: 21px; }
+.section-index { gap: 5px; color: #989a95; font-size: 9px; font-weight: 700; letter-spacing: .8px; white-space: nowrap; }
+.section-index strong { color: #4e514d; font-size: 11px; }
+.student-form { display: grid; grid-template-columns: minmax(170px, .85fr) minmax(250px, 1.4fr) auto; align-items: end; gap: 13px; padding: 0 23px 22px; }
+.student-form label, .date-field { display: grid; gap: 7px; color: #626560; font-size: 10px; font-weight: 600; }
+.student-form input, .date-field input { width: 100%; height: 38px; padding: 0 11px; border: 1px solid #e3e4df; border-radius: 4px; outline: 0; background: #fbfbf9; color: #282a28; font-size: 11px; }
+.student-form input:focus, .date-field input:focus, .note-input:focus { border-color: #90928d; background: #fff; }
+.student-form input::placeholder, .note-input::placeholder { color: #a0a29d; }
+.primary-button { display: inline-flex; min-height: 38px; align-items: center; justify-content: center; gap: 14px; padding: 0 14px; border: 1px solid #191b1b; border-radius: 4px; background: #191b1b; color: #fff; font-size: 11px; font-weight: 600; cursor: pointer; transition: background .16s ease, color .16s ease, transform .16s ease; }
+.primary-button:hover:not(:disabled) { transform: translateY(-1px); background: #373a38; }
+.primary-button:disabled { border-color: #dedfdb; background: #e8e9e5; color: #999b96; cursor: not-allowed; }
+.primary-button > span { font-size: 15px; }
+.student-list-section .table-toolbar { padding-bottom: 14px; }
+.actions-column { width: 100px; text-align: right; }
+.delete-link { display: inline-flex; min-height: 27px; align-items: center; padding: 0 9px; border: 1px solid #e3e4df; border-radius: 3px; color: #646762; font-size: 10px; transition: background .15s ease, color .15s ease; }
+.delete-link:hover { border-color: #bfc1bc; background: #f1f1ee; color: #1d1f1d; }
+.student-actions { display: flex; align-items: center; justify-content: flex-end; gap: 6px; }
+.student-actions form { margin: 0; }
+.edit-link, .cancel-edit-link { display: inline-flex; min-height: 27px; align-items: center; padding: 0 9px; border: 1px solid #e3e4df; border-radius: 3px; color: #555853; font-size: 10px; }
+.edit-link:hover, .cancel-edit-link:hover { background: #f1f1ee; }
+.student-actions .delete-link { min-height: 27px; background: #fff; cursor: pointer; }
+
+.form-section { margin-bottom: 22px; }
+.progress-count { gap: 5px; color: #91938e; font-size: 10px; }
+.progress-count strong { color: #292b29; font-size: 12px; }
+.form-toolbar { display: flex; min-height: 68px; align-items: center; justify-content: space-between; gap: 14px; padding: 11px 23px; border-top: 1px solid #efefec; border-bottom: 1px solid #efefec; background: #fbfbf9; }
+.date-field { display: flex; align-items: center; gap: 11px; }
+.date-field input { width: 148px; height: 33px; padding: 0 8px; }
+.pending-label { gap: 7px; color: #737671; font-size: 10px; }
+.pending-dot { width: 6px; height: 6px; border-radius: 50%; background: #999b96; }
+.input-table { min-width: 1080px; }
+.input-table th:nth-child(4), .input-table td:nth-child(4) { min-width: 310px; }
+.input-table tbody td { height: 70px; }
+.status-options { display: flex; align-items: center; gap: 7px; }
+.status-choice { position: relative; cursor: pointer; }
+.status-choice input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.status-choice span { display: inline-flex; min-width: 64px; min-height: 38px; align-items: center; justify-content: center; padding: 0 11px; border: 1px solid #dedfda; border-radius: 4px; background: #fff; color: #666964; font-size: 12px; font-weight: 600; transition: background .15s ease, color .15s ease, border .15s ease, transform .15s ease; }
+.status-choice:hover span { border-color: #92948f; transform: translateY(-1px); }
+.status-choice input:checked + span { border-color: #282a28; background: #282a28; color: #fff; }
+.status-choice input:focus-visible + span { outline: 2px solid #858782; outline-offset: 2px; }
+.note-input { width: 140px; height: 31px; padding: 0 8px; border: 1px solid #e6e7e2; border-radius: 3px; outline: 0; background: #fbfbf9; color: #303230; font-size: 10px; }
+.saved-label { margin-left: 6px; color: #a0a29d; font-size: 9px; }
+.muted-dash { color: #b2b4af; }
+.form-actions { display: flex; min-height: 66px; align-items: center; justify-content: space-between; gap: 14px; padding: 12px 23px; border-top: 1px solid #efefec; }
+.form-hint { color: #959791; font-size: 10px; }
+
+.report-content { padding-top: 38px; }
+.print-button { min-height: 39px; }
+.print-button svg { width: 15px; height: 15px; }
+.report-summary { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin-bottom: 22px; border: 1px solid #e6e7e2; border-radius: 4px; background: #fff; }
+.report-summary > div { display: grid; min-height: 71px; align-content: center; gap: 6px; padding: 0 17px; border-right: 1px solid #ededeb; }
+.report-summary > div:last-child { border-right: 0; }
+.report-summary span { color: #858782; font-size: 9px; }
+.report-summary strong { color: #252725; font: 700 19px 'Manrope', sans-serif; }
+.report-period { color: #898b86; font-size: 10px; }
+.month-filter { display: flex; align-items: end; gap: 7px; margin-left: auto; }
+.month-filter label { display: flex; align-items: center; gap: 7px; color: #858782; font-size: 10px; }
+.month-filter input { height: 34px; padding: 0 8px; border: 1px solid #e3e4df; border-radius: 4px; background: #fff; color: #343633; font: 10px 'DM Sans', sans-serif; }
+.month-filter button { height: 34px; padding: 0 10px; border: 1px solid #dfe0db; border-radius: 4px; background: #fff; color: #454844; font-size: 10px; font-weight: 600; cursor: pointer; }
+.month-filter button:hover { background: #f3f3f0; }
+.report-table th.numeric-cell, .report-table td.numeric-cell { width: 82px; text-align: center; }
+.report-table td.numeric-cell strong { color: #363936; font: 600 12px 'Manrope', sans-serif; }
+.report-section .table-toolbar { padding-bottom: 15px; }
+.report-meta-print { display: none; }
+
+@media (max-width: 760px) {
+    .student-form { grid-template-columns: 1fr; padding: 0 17px 18px; }
+    .student-form .primary-button { justify-self: start; }
+    .form-toolbar { align-items: flex-start; flex-direction: column; justify-content: center; padding: 12px 17px; }
+    .date-field { align-items: flex-start; flex-direction: column; gap: 6px; }
+    .date-field input { width: min(100%, 210px); }
+    .form-actions { align-items: flex-start; flex-direction: column; padding: 14px 17px; }
+    .form-actions .primary-button { width: 100%; }
+    .report-summary { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .report-summary > div { min-height: 63px; padding: 0 12px; border-bottom: 1px solid #ededeb; }
+    .report-summary > div:nth-child(3) { border-right: 0; }
+    .report-summary > div:nth-child(n+4) { border-bottom: 0; }
+    .report-table { min-width: 680px; }
+    .input-table { min-width: 1080px; }
+    .status-choice span { min-width: 68px; min-height: 42px; font-size: 13px; }
+    .status-options { gap: 8px; }
+    .count-chip { align-self: flex-start; }
+    .section-index { font-size: 8px; }
+    .month-filter { justify-content: space-between; margin-left: 0; }
+}
+
+@media (max-width: 420px) {
+    .student-form { padding-right: 14px; padding-left: 14px; }
+    .form-toolbar, .form-actions { padding-right: 14px; padding-left: 14px; }
+    .report-summary > div { padding: 0 9px; }
+    .report-summary span { font-size: 8px; }
+    .report-summary strong { font-size: 17px; }
+    .page-heading .back-link { align-self: flex-start; }
+}
+
+@media print {
+    @page { margin: 10mm; }
+    body { min-width: 0; background: #fff; color: #111; font-family: Arial, sans-serif; }
+    .no-print, .sidebar, .sidebar-scrim { display: none !important; }
+    .main-column { margin: 0 !important; }
+    .content, .report-content { width: 100%; max-width: none; padding: 0 !important; }
+    .report-section { overflow: visible; border: 0; }
+    .report-section::before { display: block; margin: 0 0 3mm; content: 'Laporan Rekapitulasi Absensi Siswa'; font-size: 14pt; font-weight: 700; }
+    .report-section .section-heading { padding: 0 0 2mm; }
+    .report-section .section-heading .eyebrow { color: #555; }
+    .report-section .section-heading h2 { font-size: 12pt; }
+    .report-section .table-scroll { overflow: visible; }
+    .report-table { min-width: 0; width: 100%; }
+    .report-table th, .report-table td { height: auto; padding: 3px 5px; border: 1px solid #c9c9c9; color: #111 !important; font-size: 8pt; line-height: 1.15; }
+    .report-table thead { display: table-header-group; background: #eee; }
+    .report-table tr { break-inside: avoid; }
+    .report-table tfoot { display: table-row-group; }
+    .report-table .signature-table-row, .report-table .signature-table-row > td { break-inside: avoid !important; page-break-inside: avoid !important; }
+    .report-table .signature-table-row > td { padding: 0; border: 0; }
+    .report-table td.numeric-cell strong, .report-table .student-name { color: #111 !important; }
+    .report-section .section-heading { break-inside: avoid; }
+    .report-meta-print { display: grid; gap: 2px; margin-bottom: 2mm; color: #111; font-size: 8pt; }
+    .report-meta-print strong { font-size: 10pt; }
+    .report-signatures { break-inside: avoid; margin-top: 10mm; border-top: 0; }
+    .report-signatures > div, .report-signatures strong, .report-signatures small { color: #111 !important; }
+    .page-footer { display: none !important; }
+}
