@@ -103,25 +103,53 @@ Untuk tampilan yang konsisten, ambil gambar setelah halaman selesai dimuat dan g
 
 ## Teknologi dan struktur file
 
-- **PHP** dengan ekstensi MySQLi untuk logika halaman dan koneksi database.
-- **MySQL/MariaDB** untuk menyimpan akun sekretaris, data siswa, dan catatan absensi.
-- **HTML sederhana dan PHP** untuk halaman dan logika aplikasi; belum ada desain CSS khusus atau framework frontend. Beberapa style inline dipakai untuk kebutuhan dasar, dan fitur cetak laporan menggunakan dialog print bawaan browser.
+Teknologi utama yang dipakai pada project saat ini adalah:
+
+- **PHP 8.x** untuk logika aplikasi, autentikasi sesi, pengelolaan data, dan rendering halaman.
+- **MySQL/MariaDB** sebagai basis data utama untuk akun pengguna, pengaturan sistem, data siswa, dan riwayat absensi.
+- **MySQLi** untuk koneksi database dan query yang aman menggunakan prepared statement.
+- **HTML5 + CSS3 + JavaScript vanilla** untuk struktur halaman, tampilan antarmuka, dan interaksi frontend dasar.
+- **Custom PHP session auth** untuk login multi-role, pengaturan aplikasi, serta proteksi halaman berdasarkan role pengguna.
+- **Asset lokal** seperti CSS, JS, gambar, dan tanda tangan digital yang disimpan di folder `assets/`.
+
+Berikut struktur direktori yang lebih sesuai dengan kondisi proyek saat ini:
 
 ```text
 .
-|-- index.php                 # Login sekretaris
-|-- dashboard.php             # Ringkasan absensi hari ini
-|-- data_siswa.php            # Tambah, lihat, dan hapus siswa
-|-- input_absen.php           # Pencatatan absensi
-|-- laporan_siswa.php         # Rekap dan cetak ke PDF
+|-- index.php                     # Halaman login sekretaris / redirect ke dashboard
+|-- dashboard.php                 # Dashboard ringkasan absensi dan overview hari ini
+|-- data_siswa.php                # Manajemen data siswa
+|-- input_absen.php               # Form input absensi harian
+|-- laporan_siswa.php             # Rekap laporan dan export/cetak laporan
+|-- settings.php                  # Pengaturan aplikasi, user, kelas, status absensi, tanda tangan
+|-- readme.md                    # Dokumentasi proyek
+|-- assets/
+|   |-- css/
+|   |   |-- dashboard.css
+|   |   |-- halaman.css
+|   |   |-- index.css
+|   |   `-- settings.css
+|   |-- js/
+|   |   |-- dashboard.js
+|   |   |-- halaman.js
+|   |   `-- settings.js
+|   |-- img/
+|   |   |-- sekretaris.png
 |-- config/
-|   |-- koneksi.php            # Konfigurasi koneksi database
-|   `-- database.sql          # Skema dan data awal (perlu koreksi; lihat catatan)
+|   |-- koneksi.php              # Konfigurasi koneksi database
+|   |-- app_settings.php         # Utility pengaturan aplikasi dan validasi role
+|   |-- database.sql             # Skema database dan data awal
+|   `-- install-php.md           # Panduan instalasi PHP
+|-- docs/
+|   |-- screenshots/             # Screenshot fitur aplikasi
+|   |-- music/                  # Media pendukung dokumentasi/project
+|   `-- update/                  # Versi tampilan update UI
 |-- proses/
-|   `-- logout.php            # Penghapusan sesi dan kembali ke halaman login
-`-- docs/
-	`-- screenshots/          # Screenshot dokumentasi
-```
+|   `-- logout.php               # Logout dan penghancuran sesi
+`-- .git/                       # Metadata repositori Git
+``` 
+
+Catatan: proyek ini masih berbasis aplikasi PHP native tanpa framework (misalnya Laravel atau CodeIgniter), tetapi sudah mulai mengadopsi struktur yang lebih rapi dan lebih siap untuk pengembangan berkelanjutan. Struktur ini lebih sesuai untuk project yang sedang berkembang dibandingkan pendekatan single-file atau layout yang terlalu sederhana.
 
 ## Menjalankan secara lokal
 
