@@ -101,6 +101,9 @@ File: `docs/screenshots/update/setting-page.png`
 ![Screenshots Page Settings](docs/screenshots/update/setting-page.png)
 Untuk tampilan yang konsisten, ambil gambar setelah halaman selesai dimuat dan gunakan ukuran/zoom browser yang serupa untuk setiap screenshot. Pastikan screenshot tidak menampilkan password, kode khusus, atau data pribadi siswa yang tidak boleh dibagikan.
 
+# Tampilan HP
+
+![Screenshots hp](docs/screenshots/screenshot-hp.png)
 ## Teknologi dan struktur file
 
 Teknologi utama yang dipakai pada project saat ini adalah:
