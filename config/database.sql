@@ -1,3 +1,5 @@
+-- Tinggal copy dibagian sql 
+
 CREATE DATABASE absensi_pure_html_php; //buat terlebih dahulu nama/databasenya 
 use absensi_pure_html_php; //gunakan databasenya
 
@@ -31,9 +33,8 @@ INSERT INTO tabel_siswa (nis, nama_siswa) VALUES
 ('1005', 'El Zhar Al Ghifari'),
 ('1006', 'Iman Yazi Suhmar Darkun'),
 ('1007', 'Izzan Afresetya'),
-('1008', 'Listyo Shobri Wicaksono'),
-('1009', 'Maher Mucktar Balaka'),
-('1010', 'Mochammad Khahfi'),
+('1008', 'Maher Mucktar Balaka'),
+('1009', 'Mochammad Khahfi'),
 ('1011', 'Muhammad Rizky Apriadi'),
 ('1012', 'Muhammad Fakhri'),
 ('1013', 'Muhammad Rizq Maulana'),

@@ -284,3 +284,6 @@ Proyek ini adalah versi pertama dengan fondasi dasar yang telah dibuat oleh deve
 ### Cara kerja tim
 
 Bahas dan sepakati kebutuhan bersama sebelum mengubah struktur database atau memulai desain final. Catat keputusan, penanggung jawab, dan hal yang masih perlu persetujuan guru. Setelah keputusan jelas, kerjakan perubahan kecil secara bertahap, uji alur terkait, lalu perbarui dokumentasi. Jaga komunikasi agar asumsi yang berbeda tidak berkembang menjadi kesalahpahaman.
+
+# Pesan 
+
