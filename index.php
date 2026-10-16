@@ -46,7 +46,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<!-- //lanjut kita buat halamannya ygy -->
 
 <!DOCTYPE html>
 <html lang="en">
